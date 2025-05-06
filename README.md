@@ -28,3 +28,8 @@ Test your typing skills with a vibey web app that tracks your WPM, accuracy, and
 2. A sentence will appear — type it as fast (and accurate) as you can
 3. Watch your **WPM**, **accuracy**, and **timer** update live
 4. When you're done typing, everything stops ✋
+
+   ## 📸 Preview
+
+![image](https://github.com/user-attachments/assets/9167bc21-9b45-4915-8190-654a73994613) 
+*Yes, it looks ✨clean✨*
