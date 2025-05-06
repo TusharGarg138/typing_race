@@ -19,3 +19,12 @@ Test your typing skills with a vibey web app that tracks your WPM, accuracy, and
 - `HTML`, `CSS`, `JavaScript`
 - Frontend only (for now 😉)
 - Want a Flask version? We got that too! 🐍
+
+---
+
+## 🧪 How It Works
+
+1. Click **Start**
+2. A sentence will appear — type it as fast (and accurate) as you can
+3. Watch your **WPM**, **accuracy**, and **timer** update live
+4. When you're done typing, everything stops ✋
