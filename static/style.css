@@ -76,7 +76,15 @@ button:hover {
    background: #6a1b9a;
    transform: scale(1.05);
  }
+ .results span {
+   font-weight: bold;
+   color: #4a148c;
+ }
  
+ @keyframes fadeIn {
+   from { opacity: 0; transform: translateY(30px); }
+   to { opacity: 1; transform: translateY(0); }
+ }
  .results {
    margin-top: 30px;
    font-size: 18px;
