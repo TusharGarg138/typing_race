@@ -6,3 +6,26 @@
    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
  </head>
+</head>
+ <body>
+   <div class="container">
+     <h1>⌨️ Test Yo' Typing Speed 💨</h1>
+     <p id="text-to-type">Click "Start" to begin...</p>
+ 
+     <textarea id="input" placeholder="Start typing here..." disabled></textarea>
+ 
+     <div class="buttons">
+       <button onclick="startTest()">🚀 Start</button>
+       <button onclick="resetTest()">🔁 Reset</button>
+     </div>
+ 
+     <div class="results">
+       <p>⚡ <strong>Speed:</strong> <span id="speed">0</span> WPM</p>
+       <p>🎯 <strong>Accuracy:</strong> <span id="accuracy">0</span>%</p>
+       <p>⏱️ <strong>Time:</strong> <span id="time">0</span> sec</p>
+     </div>
+   </div>
+ 
+   <script src="{{ url_for('static', filename='script.js') }}"></script>
+ </body>
+ </html>
