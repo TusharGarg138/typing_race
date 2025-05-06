@@ -11,3 +11,11 @@ Test your typing skills with a vibey web app that tracks your WPM, accuracy, and
 - 🚦 Auto-stop when you're done typing
 - 📱 Clean, aesthetic Gen-Z UI (yes, with a splash of vibes)
 - 🔁 Reset to try again as many times as you want
+
+---
+
+## 🛠️ Tech Stack
+
+- `HTML`, `CSS`, `JavaScript`
+- Frontend only (for now 😉)
+- Want a Flask version? We got that too! 🐍
