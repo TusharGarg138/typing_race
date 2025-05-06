@@ -72,3 +72,12 @@ textarea:focus {
    transition: 0.3s ease;
    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
  }
+button:hover {
+   background: #6a1b9a;
+   transform: scale(1.05);
+ }
+ 
+ .results {
+   margin-top: 30px;
+   font-size: 18px;
+ }
