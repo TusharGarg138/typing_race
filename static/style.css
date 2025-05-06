@@ -13,3 +13,20 @@
    align-items: center;
    height: 100vh;
  }
+.container {
+   background: white;
+   border-radius: 20px;
+   padding: 30px;
+   max-width: 750px;
+   width: 90%;
+   box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+   text-align: center;
+   animation: fadeIn 1s ease-in;
+ }
+ 
+ h1 {
+   font-size: 32px;
+   font-weight: 800;
+   color: #6a1b9a;
+   margin-bottom: 20px;
+ }
