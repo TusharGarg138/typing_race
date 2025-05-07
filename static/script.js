@@ -66,3 +66,15 @@ function calculateAccuracy(typed, original) {
   const percent = (correct / original.length) * 100;
   return Math.max(0, Math.min(100, Math.round(percent)));
 }
+function resetTest() {
+  clearInterval(interval);
+  testFinished = false;
+
+  document.getElementById("text-to-type").textContent = "Click \"Start\" to begin...";
+  document.getElementById("input").value = "";
+  document.getElementById("input").disabled = true;
+
+  document.getElementById("speed").textContent = 0;
+  document.getElementById("accuracy").textContent = 0;
+  document.getElementById("time").textContent = 0;
+}
