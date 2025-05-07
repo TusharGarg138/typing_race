@@ -49,3 +49,12 @@ function updateStats() {
   document.getElementById("accuracy").textContent = accuracy;
   document.getElementById("time").textContent = Math.floor(elapsed);
 }
+function finishTest() {
+  clearInterval(interval);
+  testFinished = true;
+
+  document.getElementById("input").disabled = true;
+
+  // Optional: Confetti or message
+  alert("🎉 Done! Great job!");
+}
