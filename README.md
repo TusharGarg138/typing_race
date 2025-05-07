@@ -34,3 +34,5 @@ Test your typing skills with a vibey web app that tracks your WPM, accuracy, and
 ![image](https://github.com/user-attachments/assets/1f158a69-df73-49f9-98dd-805a505f09f7)
 
 *Yes, it looks ✨clean✨*
+
+Let`s try: https://typingrace-ijqbxysawtddicgf7knfew.streamlit.app/
