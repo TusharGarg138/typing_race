@@ -26,3 +26,10 @@ function startTest() {
 
   inputBox.addEventListener('input', checkCompletion);  // 👈 live check
 }
+function checkCompletion() {
+  const typed = document.getElementById("input").value;
+
+  if (typed.trim() === originalText.trim()) {
+    finishTest();
+  }
+}
