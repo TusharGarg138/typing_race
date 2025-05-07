@@ -33,3 +33,19 @@ function checkCompletion() {
     finishTest();
   }
 }
+function updateStats() {
+  if (testFinished) return;
+
+  const currentTime = new Date().getTime();
+  const elapsed = (currentTime - startTime) / 1000;
+
+  const typed = document.getElementById("input").value;
+  const wordCount = typed.trim().split(/\s+/).length;
+
+  const wpm = Math.round((wordCount / elapsed) * 60);
+  const accuracy = calculateAccuracy(typed, originalText);
+
+  document.getElementById("speed").textContent = isNaN(wpm) ? 0 : wpm;
+  document.getElementById("accuracy").textContent = accuracy;
+  document.getElementById("time").textContent = Math.floor(elapsed);
+}
