@@ -1,48 +1,85 @@
-import streamlit as st
-import random
-import time
+const textSamples = [
+  "The quick brown fox jumps over the lazy dog.",
+  "Python is a powerful and versatile programming language.",
+  "Typing fast and accurately takes practice and focus.",
+  "JavaScript adds interactivity to your websites.",
+  "Frontend development is fun with HTML, CSS, and JS."
+];
 
-# List of sample texts
-text_samples = [
-    "The quick brown fox jumps over the lazy dog.",
-    "Python is a powerful and versatile programming language.",
-    "Typing fast and accurately takes practice and focus.",
-    "JavaScript adds interactivity to your websites.",
-    "Frontend development is fun with HTML, CSS, and JS."
-]
+let originalText = "";
+let startTime;
+let interval;
+let testFinished = false;
 
-st.title("Typing Race Game 🏁")
+function startTest() {
+  originalText = textSamples[Math.floor(Math.random() * textSamples.length)];
+  document.getElementById("text-to-type").textContent = originalText;
 
-# Session state initialization
-if 'text_to_type' not in st.session_state:
-    st.session_state.text_to_type = random.choice(text_samples)
-if 'start_time' not in st.session_state:
-    st.session_state.start_time = None
-if 'finished' not in st.session_state:
-    st.session_state.finished = False
+  const inputBox = document.getElementById("input");
+  inputBox.value = "";
+  inputBox.disabled = false;
+  inputBox.focus();
 
-# Start button
-if st.button("Start New Test"):
-    st.session_state.text_to_type = random.choice(text_samples)
-    st.session_state.start_time = time.time()
-    st.session_state.finished = False
-    st.session_state.typed_text = ""
+  testFinished = false;
+  startTime = new Date().getTime();
+  interval = setInterval(updateStats, 100);
 
-# Show the text to type
-st.markdown("### Type this:")
-st.write(st.session_state.text_to_type)
+  inputBox.addEventListener('input', checkCompletion);  // 👈 live check
+}
 
-# User input box
-typed = st.text_input("Start typing here:", value=st.session_state.get("typed_text", ""), disabled=st.session_state.finished)
+function checkCompletion() {
+  const typed = document.getElementById("input").value;
 
-# Store the typed text
-st.session_state.typed_text = typed
+  if (typed.trim() === originalText.trim()) {
+    finishTest();
+  }
+}
 
-# Check for completion
-if not st.session_state.finished and typed.strip() == st.session_state.text_to_type.strip():
-    end_time = time.time()
-    elapsed = end_time - st.session_state.start_time
-    word_count = len(st.session_state.text_to_type.split())
-    wpm = (word_count / elapsed) * 60
-    st.success(f"✅ Finished in {elapsed:.2f} seconds! Your speed: {wpm:.2f} WPM")
-    st.session_state.finished = True
+function updateStats() {
+  if (testFinished) return;
+
+  const currentTime = new Date().getTime();
+  const elapsed = (currentTime - startTime) / 1000;
+
+  const typed = document.getElementById("input").value;
+  const wordCount = typed.trim().split(/\s+/).length;
+
+  const wpm = Math.round((wordCount / elapsed) * 60);
+  const accuracy = calculateAccuracy(typed, originalText);
+
+  document.getElementById("speed").textContent = isNaN(wpm) ? 0 : wpm;
+  document.getElementById("accuracy").textContent = accuracy;
+  document.getElementById("time").textContent = Math.floor(elapsed);
+}
+
+function finishTest() {
+  clearInterval(interval);
+  testFinished = true;
+
+  document.getElementById("input").disabled = true;
+
+  // Optional: Confetti or message
+  alert("🎉 Done! Great job!");
+}
+
+function calculateAccuracy(typed, original) {
+  let correct = 0;
+  for (let i = 0; i < typed.length; i++) {
+    if (typed[i] === original[i]) correct++;
+  }
+  const percent = (correct / original.length) * 100;
+  return Math.max(0, Math.min(100, Math.round(percent)));
+}
+
+function resetTest() {
+  clearInterval(interval);
+  testFinished = false;
+
+  document.getElementById("text-to-type").textContent = "Click \"Start\" to begin...";
+  document.getElementById("input").value = "";
+  document.getElementById("input").disabled = true;
+
+  document.getElementById("speed").textContent = 0;
+  document.getElementById("accuracy").textContent = 0;
+  document.getElementById("time").textContent = 0;
+}
