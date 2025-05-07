@@ -58,3 +58,11 @@ function finishTest() {
   // Optional: Confetti or message
   alert("🎉 Done! Great job!");
 }
+function calculateAccuracy(typed, original) {
+  let correct = 0;
+  for (let i = 0; i < typed.length; i++) {
+    if (typed[i] === original[i]) correct++;
+  }
+  const percent = (correct / original.length) * 100;
+  return Math.max(0, Math.min(100, Math.round(percent)));
+}
